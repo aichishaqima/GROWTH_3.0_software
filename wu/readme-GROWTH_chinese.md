@@ -30,12 +30,12 @@ This package includes:
                   VIEW.exe 
 
 
-    (c) Files for an application example, corresponding to a gravity survey in the volcanic Island of El Hierro (Canary Islands).
+    (c) 示例数据,  El Hierro火山岛的重力测量数据位于加那利群岛.
 
 
-                  Data files:   GRA.DAT , and MAP.BLN  (the second one,only for pictures)
+                  数据文件:   GRA.DAT ,  MAP.BLN  (第二个文件用于作图)
  
-                  Output files:    MOD.DAT, FIL.DAT
+                  输出文件:    MOD.DAT, FIL.DAT
 
 
-   (d) Additional files (*.vfproj, *.h, *.rc, *.ico, etc) for compilation.
+   (d) 用于编译的源文件(*.vfproj, *.h, *.rc, *.ico, etc)
