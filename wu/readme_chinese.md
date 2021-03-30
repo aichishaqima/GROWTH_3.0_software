@@ -84,26 +84,26 @@
 0 0 0 0 0 0  
 
                  
-2.2.2. Values for several parameters in a dialog form through the Graphical User Interface (GUI): 
+2.2.2. 图形用户界面（GUI）的对话框窗体中的多个参数的值 (GUI): 
 
-First step (left hand pane): 
+第一步 (左侧窗格): 
 
-- Names of the input and output files (default values are provided). 
-  Paths can be used. It is necessary to press “Run/OK” at the end of each step. 
-  The program’s response to successful data loading is displaying the number count of benchmarks.
+- 输入输出文件名 (提供默认值). 
+  可以使用路径. 在每个步骤完成时，需要点击 “Run/OK”. 
+  程序成功加载运行后会显示计算量.
 
-Second step: geometrical parameters (default values are provided).
+第二步: 几何参数 (提供默认值).
 
-- Depth (m) of the model top. Negative values below sea level as usual.
-- Maximum depth (m) of the model bottom. Negative values below sea level as usual.
-- Mean length (m) for the side of the parallelepiped cells. Shallow cells will have smaller length and deep cells will have larger length.
+- 模型顶部的深度(m). 还是低于海平面为负值.
+- 模型底部的最大深度(m) Negative values below sea level as usual.
+- 结构单元的平均长度(m). 浅层结构单元的长度较小，深层结构单元的长度较大.
 
-Third step (bottom): repetition. 
+第三步 (底部): 重复. 
 
- If the resulting number m of cells is too high (>95,000 in this version) the check box “Re-run” allows for a new calculation.
- Upon clicking “Run”, the resultant 3D cell partition model is saved by default in the file “GRI.DAT”.
+ 如果生成的单元格数m的量太大 (>95,000 此版本) 则点击复选框 “Re-run” 能够重新进行运算.
+ 单击 “Run”, 生成的三维单元体模型默认保存在文件“GRI.DAT”中.
 
-Fourth step (centre and right hand pane): parameters for inverse modelling (default or example values are provided).
+第四步 (中间和右侧窗格): 用于反演模型的参数(提供了默认值或示例值).
 
 a) Regional trend.
 - Mean value g0 (µGal). This is an assumed regional constant value or mean offset value for the Bouguer anomaly data. If the “Adj” button is not pressed, the inversion is based on the given input value, which is assumed as fixed. By pressing the corresponding “Adj” button (default option), this parameter is considered as unknown to the program and an optimal value is adjusted as part of the inversion. The offset parameter has a particular bearing on the deeper parts of the model domain. We suggest performing an initial inversion by automatically adjusting a value, and then re-running inversions by varying this value in order to probe changes in the deep parts of the resultant 3D density models.
