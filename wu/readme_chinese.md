@@ -66,13 +66,13 @@
 2.1. 作用:  根据已有重力数据(GRA.DAT)通过计算得到异常体模型来实现三维重力反演. 该程序通过不断迭代使异常结构不断拟合重力数据观测值.
                 
            
-2.2. INPUT.
+2.2. 输入.
                                                             
-2.2.1. Input file:
+2.2.1. 输入文件:
 
--> file "GRA.DAT": The basic input ASCII file, named "GRA.DAT" (as default), contains a line corresponding to each gravity benchmark with the following values: x-coordinate (m), y-coordinate (m), altitude (m) (throughout the software package, elevation and depth values are positive above sea level and negative below sea level, respectively), gravity anomaly (uGal) (1 uGal=10-8 m/s2). Two additional columns are optionally included: a gravity error estimate (uGal) for each anomaly value, and the value for terrain correction (uGal) corresponding to unit density (1 kg/m3). Values for error estimation will be employed and propagated only optionally for initial relative weighting of the data. Values for terrain correction will be employed only optionally for re-estimation of a value for terrain density. Both complementary values could be filled with arbitrary numbers and neglected in the process. The end of data will be the last line or can be indicated by a line of “zeros”.
+-> 文件 "GRA.DAT": 最基本的输入文件"GRA.DAT" (默认情况下), 包含对应重力异常测定得到的: x坐标 (m), y坐标 (m), 海拔 (m) (整个软件包中，海拔值和深度值在海平面以上为正值，海平面以下为负值), 重力异常值 (uGal) (1 uGal=10-8 m/s2). 两个可选列: 每个观测点异常的重力误差估计值 (uGal), 单位密度 (1 kg/m3) 的地形校正值 (uGal). 误差估计值会在计算过程中采用，并选择性的用于数据的初始相对加权. 地形校正值会被选择性的用于重新估计地形密度值. 两个互补值都可以用任意数字填充，并且在这个过程中被忽略. 数据的最后一行需要用一行0值填充.
 
-   example:
+   例:
 
 212876.1 3079402.0  560.30  9094 30  2917
 212903.9 3079303.6  571.02  9041 30  3012
