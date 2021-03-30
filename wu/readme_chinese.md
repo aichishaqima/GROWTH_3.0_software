@@ -1,4 +1,4 @@
-U S E R  M A N U A L 
+用 户 手 册
 
                                    "G R O W T H 3.0"                                                           
           
@@ -44,26 +44,26 @@ U S E R  M A N U A L
  (3) 兼容Windows 10 Pro
  (4) 能够反演向下密度增加的情况, 
  (5) 能够反演出来层状结构, 
- (6) inversion accounting optionally for lateral smoothing of the source structures,
- (7) a new graphical presentation across the inversion process,
- (8) a simpler structure of the file with the resulting 3D model,
- (9) default values for all the parameters, and suggestions after running.
+ (6) 能够反演出场源横向平滑的情况,
+ (7) 整个反演过程伴随着图像显示,
+ (8) 生成的三维模型有更简单的文件结构,
+ (9) 所有参数提供默认值，并保证运行的连续性.
 
 
-The main input is a file "GRA.DAT" containing the coordinates of the gravity stations and the observed anomaly (see #2.2).
-The method (see [1] and [2]) seeks to determine the geometry of an indefinite number of anomalous bodies with prescribed (fixed or variable, positive and/or negative) density contrasts. A 3-D grid of regular cells is taken to represent the subsurface volume. Then, the inversion method fills some of these cells, with the possible density contrast, to reproduce the anomalous structures.
+主要输入文件GRA.DAT包含观测位置坐标信息，及重力异常值(详见 #2.2).
+该方法 (详见 [1]  [2]) 用于确定具有明显(固定或可变，正或负)密度对比的多个异常体的几何结构.用大量规则单元组成的三维网格表示地下结构。通过反演方法用密度异常填充其中部分单元，从而再现地下密度异常结构。
 
-This software is composed of two Fortran 77 codes:  GROWTH.FOR and VIEW.FOR. 
+该软件由两个Fortran 77代码组成:  GROWTH.FOR 和 VIEW.FOR. 
 
-   GROWTH.FOR is the main inversion program. 
-   VIEW.FOR   provide graphics representation of the obtained models.
-
-
-
-2. PROGRAM "GROWTH.FOR": 3-D gravity inversion.
+   GROWTH.FOR 主反演程序. 
+   VIEW.FOR   提供图形显示.
 
 
-2.1. AIM:  to realize a 3-D gravity inversion, searching for a model (MOD.DAT) of the anomalous bodies by means of an exploratory process from a gravity data file (GRA.DAT). The program works step by step in a growth process of the anomalous bodies to fit the observed gravity anomaly.
+
+2. "GROWTH.FOR": 三维重力反演.
+
+
+2.1. 作用:  根据已有重力数据(GRA.DAT)通过计算得到异常体模型来实现三维重力反演. 该程序通过不断迭代使异常结构不断拟合重力数据观测值.
                 
            
 2.2. INPUT.
