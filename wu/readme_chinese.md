@@ -95,7 +95,7 @@
 第二步: 几何参数 (提供默认值).
 
 - 模型顶部的深度(m). 还是低于海平面为负值.
-- 模型底部的最大深度(m) Negative values below sea level as usual.
+- 模型底部的最大深度(m) 低于海平面为负值.
 - 结构单元的平均长度(m). 浅层结构单元的长度较小，深层结构单元的长度较大.
 
 第三步 (底部): 重复. 
@@ -105,12 +105,12 @@
 
 第四步 (中间和右侧窗格): 用于反演模型的参数(提供了默认值或示例值).
 
-a) Regional trend.
-- Mean value g0 (µGal). This is an assumed regional constant value or mean offset value for the Bouguer anomaly data. If the “Adj” button is not pressed, the inversion is based on the given input value, which is assumed as fixed. By pressing the corresponding “Adj” button (default option), this parameter is considered as unknown to the program and an optimal value is adjusted as part of the inversion. The offset parameter has a particular bearing on the deeper parts of the model domain. We suggest performing an initial inversion by automatically adjusting a value, and then re-running inversions by varying this value in order to probe changes in the deep parts of the resultant 3D density models.
-- gx, gy (µGal/km). These are slopes of the linear regional trend. The values may either be obtained from a regional survey and then introduced here as fixed values or conversely, they can be regarded as unknowns (pressing “Adj” button, default option) to be adjusted simultaneously in the inversion process.
+a) 区域趋势.
+- 平均值 g0 (µGal). 可以视为布格异常总场值或平均偏移量值. 如果“Adj”按钮未按下, 反演基于给定的输入值, 该值被认为是一个固定值. 如果“Adj”按钮被按下(默认选项), 则该参数被认为是未知的, 在反演过程中不断完善该值. 偏移参数对模型的深部位置有一定的影响. 建议进行初始反演时选择自动调整的方式，然后通过手动改正该值来重新运行反演程序, 以便得到三维密度模型深层部分的最佳反演.
+- gx, gy (µGal/km). 这两个量是趋势面的导数. 这些值可以从区域场中计算得到，然后作为已知量引入, 类似，他们也可以被当作未知值(按“Adj”按钮，默认选项)，在反演的过程中不断调整.
 
-b) Inversion parameters.
-- Coefficient r for random search. This is an integer value (>=1) that allows for an exploratory process with a more or less random character. For a value of 1, the program carries out a systematic exploration. For a value r>1, the program tests 100/r % cells, randomly selected, thus allowing for a faster (but less precise) solution.
+b) 反演参数.
+- 随机搜索系数r. 整数值 (>=1) 通过输入该参数来进行随即搜索. 如果值为1, 则进行系统默认的搜索. 如果该值大于1, 能够实现更快但不太准确的计算方案.
 - Balance factor. This positive value corresponds to the parameter for balance between “fitness” and “smoothness” of the model. The value is dependent on the quality of the data and on the complexity of the subsurface structure. For low values, the inversion results in the generation of an excessively complex model of the subsurface structure with very good fit to the data. For high values, the inversion produces a simple model but with poor fit to the data. The operator may try different values of it close to the default value and draw conclusions by means of the third program (“VIEW”, see below) and evaluation of the auto-correlation distribution.
 
 c) Terrain density fit. 
