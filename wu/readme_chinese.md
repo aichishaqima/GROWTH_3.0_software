@@ -111,26 +111,26 @@ a) 区域趋势.
 
 b) 反演参数.
 - 随机搜索系数r. 整数值 (>=1) 通过输入该参数来进行随即搜索. 如果值为1, 则进行系统默认的搜索. 如果该值大于1, 能够实现更快但不太准确的计算方案.
-- Balance factor. This positive value corresponds to the parameter for balance between “fitness” and “smoothness” of the model. The value is dependent on the quality of the data and on the complexity of the subsurface structure. For low values, the inversion results in the generation of an excessively complex model of the subsurface structure with very good fit to the data. For high values, the inversion produces a simple model but with poor fit to the data. The operator may try different values of it close to the default value and draw conclusions by means of the third program (“VIEW”, see below) and evaluation of the auto-correlation distribution.
+- 平衡因子. 该值为正值, 对应于模型的 “fitness” 和 “smoothness” 之间的平衡参数. 该值取决于数据的质量和地下结构的复杂性. 如果该值为低值, 反演结果生成的是一个非常复杂的地下结构模型. 如果该值为高值, 繁衍的到一个相对简单的模型，而且与原始数据的拟合差较大. 操作工程中可以尝试默认值附近的不同值, 并通过第三个程序 (“VIEW”, 见下文) 和自相关分布的计算得出结论.
 
-c) Terrain density fit. 
-This is an option to estimate a revised value (kg/m3) to the terrain density used in the gravity anomaly calculations. It should be applied when the topographic relief is highly variable over the survey area (large and different terrain coefficients for unit density) to ensure a reliable solution. The corrective term is determined simultaneously during the gravity inversion according to the same minimization constraints. In this case a new parameter is required: the terrain filtering radius (meters). This is a distance value used to carry out an initial filtering of the terrain coefficients.
+c) 地形密度匹配. 
+该选项是用于估算重力异常计算中使用的地形密度改正值(kg/m3). 当测区地形起伏变化较大 (单位密度的地形系数较大且不同) 时, 应该采用该方法，以得到更加可靠的解. 在重力反演过程中，根据相同的最小化约束条件，来确定校正项. 在这种情况下, 需要一个新参数: 地形滤波半径 (meters). 这是用于对地形系数执行初始滤波的距离值.
 
-d) Parameters for density distribution.
-- Prescribed positive and negative limits for density contrast (kg/m3). Optionally, pressing button “Adj”, the program determines a density contrast values (positive and negative) satisfying the minimization conditions. 
-- Lateral smoothing "a": This positive value defines the pattern of density transition across the boundaries (geometrical smoothness) of the resultant anomalous bodies. For low values of a, the boundaries are abrupt and the bodies approximate homogeneous geometries (a=0) , such as cubes or spheres, with a single density value. For high values of a, the boundaries appear smoothed and the bodies are more diluted, with density values close to the extreme values towards the centre of the body and decreasing values towards their periphery.
-- Flattening coefficient "f": It is connected with the downward continuous increase in density for the background medium. For a flattening coefficient f close to zero the inverse approach produces a 3D model with cup shape, corresponding to a homogeneous background medium. For a high value of this coefficient f, the inverse model becomes flattened, with small vertical size and bell shape, as corresponding to a background medium with high downward increase in density. For instance, for volcanic areas, with possible intrusive bodies vertically elongated, a f value close to 2 or 3 can be tried. But for sedimentary areas, dominated by sub-horizontal layers and increased compaction as a function of depth, a f value larger than 6 could be more suitable.
-- Upward weighting u: It is an optional parameter to get shallower models, based on an unbalanced weighting in the fit. Top regions have higher weigth than deep regions. It is very useful for models characterized by a shallow main low density structure. This is the case of basin structures and other sedimentary structures. Value cero for u corresponds to neutral weighting. Higher value as 1,2, ... produce shallower models. 
-- Sub-horizontal discontinuity layers: This check box accounts for the particular case of structures composed by several discrete layers with known average depth and fixed density. This case requires a precise a priori information of the medium structure to get suitable results. In the case of select this option, a new dialog window appears to input the a priori values for the layers.
+d) 密度分布参数.
+- 密度差异最大值 (kg/m3). 选填项, 如果“Adj”按钮被按下, 程序自动确定满足最小化条件的密度对比值(正和负). 
+- 横向平滑系数 "a": 这正值定义了穿过异常体模型边界的密度过渡模式(几何平滑度). 对于较低的a值, 边界是突变的, 和近似均匀的几何体 (a=0) , 例如具有单个密度值的立方体或球体. 对于较高的a值, 边界看起来更光滑, 下降梯度更小, 密度值接近物体中心处取得极值, 并向其外围递减.
+- 扁平率 "f": 当扁平率f接近零时, 反演得到一个杯型的三维模型, 对应均匀分布的背景介质. 当该系数f值较大时, 反演模型起伏较小, 垂直变化较小, 呈钟形, 与密度向下增加较大的背景介质相对应. 例如, 对于可能为垂直拉长侵入体的火山区, 可以尝试接近2或3的f值. 但对于以近水平层为主、压实度随深度增加的沉积区, f值大于6可能更为合适.
+- 向上加权系数u: 基于拟合中的不平衡加权, 是计算浅层模型的可选参数. 顶部区域的重量比深部区域大. 这对于以浅层低密度构造为主的模型非常有用. 例如盆地构造和其他沉积构造. 如果u的值为零, 对应正常模型. 当取1, 2...或更高的值时, 对应较浅的模型. 
+- 次水平不连续层: 此复选框用于说明由几个具有平均深度和固定密度的离散层组成的特定结构. 这种情况需要精确的介质结构先验信息才能得到合适的结果. 在勾选此选项的情况下, 将显示一个新的对话框窗口来输入先验值.
 
 
 
-2.3. RUNNING
+2.3. 运行
 
-Once all the required parameters are introduced, the program initiates the inversion. 
-The evolution of the numbers of filled cells, number of outliers, density contrast values, standard deviation, regional values, etc. are shown on-screen. A graphic presentation (plan and elevation views) shows also the model growth.
+已经输入所有必需的参数, 就可以运行反演程序. 
+单元格数、异常值数、密度对比度、标准差、区域值等的变化会显示在屏幕上.  图像 (平面视图和立体视图) 随着反演计算显示.
 
-The process ends when it is not possible to aggregate a new cell within the model constrains. Then , a message of either correct execution or error appears. Moreover, a box with some characteristic parameters of the resulting model and another box with a graphical presentation of the mass vs. depth distribution are displayed.
+当无法在模型约束内聚合新单元时，程序结束运行. Then , a message of either correct execution or error appears. Moreover, a box with some characteristic parameters of the resulting model and another box with a graphical presentation of the mass vs. depth distribution are displayed.
 
 In particular, resulting values for (a) autocorrelation, (b) mass inversion, and (c) mass/depth slope can help to decide modification of the input modelling parameters. For instance, a high autocorrelation value of the resulting residual values suggests that the assumed balance factor is too low and there is a remaining signal. A re-running with a lower balance factor would be interesting. A high resulting value of mass inversion suggest that there is some portion of the model with downward density decrease. A re-runnig of the inversion approach with a higher value of flattening would be interesting. Surely, the last conclusion could be also obtained by inspection of the mass vs. depth distribution picture.
 
