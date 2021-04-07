@@ -130,15 +130,15 @@ d) 密度分布参数.
 已经输入所有必需的参数, 就可以运行反演程序. 
 单元格数、异常值数、密度对比度、标准差、区域值等的变化会显示在屏幕上.  图像 (平面视图和立体视图) 随着反演计算显示.
 
-当无法在模型约束内聚合新单元时，程序结束运行. Then , a message of either correct execution or error appears. Moreover, a box with some characteristic parameters of the resulting model and another box with a graphical presentation of the mass vs. depth distribution are displayed.
+当无法在模型约束内聚合新单元时，程序结束运行. 然后，将会出现一条提示程序是否成功运行的信息. 此外，还会显示一个窗口，其中包括所生成模型的一些特征参数，及质量和深度分布的图形表示.
 
-In particular, resulting values for (a) autocorrelation, (b) mass inversion, and (c) mass/depth slope can help to decide modification of the input modelling parameters. For instance, a high autocorrelation value of the resulting residual values suggests that the assumed balance factor is too low and there is a remaining signal. A re-running with a lower balance factor would be interesting. A high resulting value of mass inversion suggest that there is some portion of the model with downward density decrease. A re-runnig of the inversion approach with a higher value of flattening would be interesting. Surely, the last conclusion could be also obtained by inspection of the mass vs. depth distribution picture.
+特别是，结果值(a)自相关, (b)质量反演, 和(c)质量/深度斜率的结果值有助于确定输入建模参数的修改。例如, 所得残值的高自相关值表明假设的平衡因子太低并且存在剩余信号. 以较低的平衡系数重新运行会使结果更接近预期. 当然, 最后的结论也可以通过检查质量和深度分布图得到.
 
 
 
-2.4. OUTPUT                                                              
+2.4. 输出                                                              
                                                                
--> file "MOD.DAT": inversion model as 3-D partition of the subsurface volume into cells of anomalous density. The content and general format of this ASCII file is: 
+-> "MOD.DAT"文件: 将地下体积划分为多个单元体的密度异常三维反演. 这个ASCII文件的内容和一般格式为: 
  
     nc, side, step
     x(1),y(1),z(1),tx(1),ty(1),tz(1),d(1)   
@@ -148,22 +148,22 @@ In particular, resulting values for (a) autocorrelation, (b) mass inversion, and
 
     where:                                                         
 
-    nc:  total number of cells (parallelepiped) of the model                                  
-    side: adopted mean side (in metres) for the cells in the 3D partition                                    
-    step: distance (in metres) for step in the further correlation analysis. 
+    nc:  模型的单元体个数                                
+    side: 单元体长宽高平均长度(m)                                 
+    step: 进行相关性分析的单元体之间的距离(m) 
                                          
-    x(j),y(j),z(j): coordinates (in metres) UTM and depth for the center of the j-th cell of the model.
-    tx(j),ty(j),tz(j): horizontal sides along x,y,and z of the j-th cell of the model.
-    d(j): anomalous density contrast (kg/m3) of the j-th cell
+    x(j),y(j),z(j): 模型第j个单元中心的坐标(m), UTM及深度.
+    tx(j),ty(j),tz(j): 模型第j个单元的密度密度异常.
+    d(j): 模型第j个单元的密度异常(kg/m3)
 
-    ds(j): anomalous density contrast (kg/m3) of the j-th cell without including the medium effects.
-    at(j): mean quadratic atraction ugal for density=10 Tm/m3 in the j-th cell
-    sc(j): scale factor when filling of j-th cell
+    ds(j): 模型第j个单元体的密度异常,不包括介质效应(kg/m3).
+    at(j): 模型第j个单元体ugal平均值平方除密度=10 Tm/m3 
+    sc(j): 填充第j个单元体时的比例因子
     j=1,...,nc
 
-At the end of this file MOD.DAT, several characteristic parameters of the inversion model are displayed: mean density contrast of the anomalous model, mean density contrast of the negative anomalies, mean density contrast of the positive anomalies, extreme density contrasts, depth of the full anomalous, negative and positive structures, etc.
+在文件MOD.DAT的末尾给出了反演模型的几个特征参数: 模型的平均剩余密度, 模型负异常的平均剩余密度, 模型正异常的平均剩余密度, 平均剩余密度的极值差, 正负异常构造等等.
 
-      example:
+      例如:
  
   97629    280   1497
  199817 3070514    1161    224    144    224      0    798     66     0.0
@@ -224,14 +224,14 @@ Dens. pattern:
 
 
 
--> file "FIL.DAT": ASCII file containing, for each data point (in planar coordinates), the following values (uGal) resulting from the inversion process:
-              regional gravity anomaly
-              observed local anomaly (= observed - regional anomaly)
-              modelled local anomaly
-              residual values
-              estimated weights (relative to median=1.0)
+-> 文件"FIL.DAT": ASCII文件, 对于每个数据点(在平面坐标中), 包含由反演过程产生的以下值(uGal):
+              区域重力异常
+              观测局部异常 (= 观测值 - 区域异常)
+              模型局部异常
+              剩余值(观测与模型差值)
+              估计权重 (相对于中位数=1.0)
 
-     example:
+     例如:
 
  212876. 3079402.   12692.   -3598.   -3821.     223.     0.74        
  212904. 3079304.   12669.   -3628.   -3444.    -184.     0.61        
@@ -243,65 +243,65 @@ Dens. pattern:
     . . . . . . . . . . . 
 
 
-2.4. DIMENSIONS                                                         
+2.4. 要求                                                         
 
-    The memory requirements of the program execution depend on the following parameters:
+    程序执行的内存需求取决于以下参数:
                                                          
-    ms:  max. number of gravity stations. 
-    mc:  max. number of whole prismatic cells for the 3-D grid.   
+    ms:  最大重力观测点数. 
+    mc:  三维模型最大单元体数.   
 
-The values of these size parameters can be changed in the code according to the applications and the memory abailability.
+这些参数值的大小可以根据应用程序和可用内存用代码进行修改.
 
 
 
-2.5. INCLUDED SUBROUTINES
+2.5. 包含的子程序
                                     
-  VAP: Vertical attraction (in microgal, positive upwards) of a parallelepiped cell of: 
-              center xc,yc (metres, from the point), 
-              horizontal sides dx,dy (metres), 
-              depth of the bottom and top faces zb,zt 
-                     (metres, positive upwards), and
-              density d (kg/m3) 
-      upon the coordinate origin. 
-      The main calculus is carried out in the subroutine PIC.
-  STEP: Obtaining a default value for correlation step corresponding to the geometrical distribution of benchmarks.
-  DMEDIAN: Obtaining the median of n different numbers.
-  DIM: Output massage dimension limits are exceeded.
-  COV2: Autocorrelation of two-dimensional data for a given correlation step.
+  VAP: 平行六面体单元体的垂直吸引 (以微伽为单位, 向上为正): 
+              中心坐标 xc,yc (metres, from the point), 
+              边长 dx,dy (metres), 
+              底面和顶面深度 zb,zt 
+                     (metres, 向上为正), and
+              密度 d (kg/m3) 
+      坐标原点向上. 
+      主要计算在子程序PIC中进行.
+  STEP: 获取与基准点几何分布相对应的相关步长的默认值.
+  DMEDIAN: 求取n个不同数的中值.
+  DIM: 提示维度超出限制.
+  COV2: 二维数据的自相关.
   DIAL1, DIAL2, DIAL3, DIAL4, ABIL1, ABIL2, ABIL3, ABIL4, ABIL5, ABIL6, ABIL7, ABIL8, FIN: Dialog interfaces.
 
 
 
-2.6. COMPILING SPECIFICATIONS. 
+2.6. 编译规范. 
 
-Compiled with Intel Visual Fortran, by using a Quickwin Application Project. The complete compilation requires reveral additional files (that are available in the zip file of codes and):
+通过使用Quickwin程序完成Inter Visual Fortran程序的编译. 完整的编译需要额外的文件 (可以在压缩文件中的代码文件中找到):
     
-   Resource files:  Growth.rc    (resource script)
+   源文件:  Growth.rc    (resource script)
                     Growth.ico   (icono)
    
-   Fortran source files:  Growth.fd
+   Fortran源文件:  Growth.fd
                           Growth.for 
 
-   C/C++Header:  Growth.h   (dialog window)    
+   C/C++Header:  Growth.h   (对话框窗口)    
 
 
 
 
-3. PROGRAM "VIEW.FOR": Graphic presentation of the inversion model.
+3. 程序"VIEW.FOR": 反演模型图示.
 
 
-3.1. AIM:  to give a visual presentation of results coming from GROWTH gravity inversion. The program can offer several coloured pictures of the 3D inversion model by means of vertical profiles and horizontal cross sections. Maps of the gravity anomaly, altitudes, residuals, calculated anomaly, regional trend, etc are also availables. Optionally, output files can be obtained to export the figures to another more sophisticated graphical device.
+3.1. 作用:  对重力反演的结果进行直观的描述. 该程序可以通过垂直剖面和水平剖面提供三维反演模型的多种彩色图像. 还提供了重力异常图、高程图、残差图、计算异常图、区域趋势图等. 可选的, 可以获得输出文件以将图形导出到另一个更复杂的图形设备.
                 
            
-3.2. INPUT.
+3.2. 输入.
                                                             
--> file "GRA.DAT" (default name): ASCII file of coordinates, altitudes, observed gravity values and relative errors for the gravity stations. See paragraph #3.2 about content and format.
+-> 文件"GRA.DAT" (自定义名称): 重力观测点的坐标、高度、观测重力值和相对误差的ASCII文件. 关于内容和格式, 见3.2.
 
--> file "MOD.DAT" (default name): resulting 3-D model for the anomalous density contrasts, obtained as output of GROWTH.FOR. See paragragh #3.4 about content and format.
+-> 文件"MOD.DAT" (自定义名称): 反演得到的密度异常三维模型, 程序GROWTH.FOR的输出文件. 见3.4.
 
--> file "FIL.DAT" (default name): resulting regional, local, calculated and residual anomaly values from the inversion process, obtained as output from GROWTH.FOR. See paragraph #3.4 about content and format.  
+-> 文件"FIL.DAT" (自定义名称): 反演过程产生的区域、局部、计算和剩余异常值, 程序GROWTH.FOR输出. 见3.4.  
        
--> file "MAP.BLN" (default name): ASCII file containing a base map (coast, roads, etc.) to be included on the graphic presentation. The format of this file is:
+-> 文件"MAP.BLN" (自定义名称): ASCII文件包含在图形表示中的基础组件 (海岸, 道路, 等.). 此文件的格式为:
  
        j1
      xx(1),yy(1)
@@ -315,9 +315,9 @@ Compiled with Intel Visual Fortran, by using a Quickwin Application Project. The
      xx(j2),yy(j2) 
        ...
 
- where j1,j2,... are the number of points for each line and xx,yy are plane coordinates for the sucessive points of the lines.
+ 其中 j1,j2,... 是每条线的点数, xx, yy是线延续点的平面坐标.
        
-  example
+  例如
 
      1528   * El Hierro
   211600 3084000   0.4
@@ -327,73 +327,72 @@ Compiled with Intel Visual Fortran, by using a Quickwin Application Project. The
    . . . . . . . . . .
 
 
-3.3. OUTPUT
+3.3. 输出
 
-3.3.1. GRAPHICS
-Several kinds of pictures corresponding to program options can be obtained on the screen.
+3.3.1. 图像文件
+在屏幕上可以获得与程序选项相对应的多种图片.
 
-a. Plane maps (including the lines of MAP.BLN) for:
-         station altitudes
-         observed gravity anomaly
-         relative errors of the observed anomaly
-         regional trend values
-         local anomaly (= observed anomaly - regional anomaly) 
-         calculated values for the local anomaly
-         inversion residuals
+a. 平面图 (包括MAP.BLN文件绘制的线):
+         观测点的高度
+         观测重力异常
+         观测异常相对误差
+         区域趋势值
+         局部异常 (= 观测异常 - 区域异常) 
+         局部异常的计算值
+         反演残差
 
-b. Combined view of one horizontal section (across a desired depth) and two vertical profiles (with nearly W-E and S-N directions) of the 3-D model for:         
-         density contrasts
-         sensitivity values   
+b. 三维模型的一个水平剖面(穿过所需深度), 以及两个垂直剖面(具有近W-E和S-N方向)的组合视图:         
+         密度差异
+         灵敏度值  
 
 
-3.4. DIMENSIONS                                                         
+3.4. 要求                                                         
 
-    The memory requirements of the program execution depend on the following parameters:
+    程序执行的内存需求取决于以下参数:
                                                          
-    ms:  max. number of gravity stations. 
-    mc:  max. number of prismatic cells for the 3-D grid.   
-    mb:  max. number of points for the base map file.    
+    ms:  最大观测点数. 
+    mc:  三维网格最大单元体个数.   
+    mb:  底图文件的最大点数.    
  
-The values of these size parameters can be changed in the code according to the applications and the memory abailability.
+这些参数值的大小可以根据应用程序和内存可用性在代码中更改.
 
 
 
-3.5. INCLUDED SUBROUTINES
+3.5. 包含的子程序
                                     
-ACOL: determinig a colour k corresponding to a variable dn.
-CMAP: displaying a coloured map of a plane data distribution x,y,g.
-CONT: displaying a base map of polygonal lines.
-PERTOP: determining a topographical line across a vertical profile
-   of the 3-D model
-AM: interpolating and smoothing from a 3-D grid of cells.
-SST: mean sensitivity of the network for a variable point mass 
-STRA: determining horizontal layers.
-COV2 and BUSCA: Autocorrelation of two-dimensional data for a given correlation step.
-TITULO: drawing a title.
-DIM: Output massage dimension limits are exceeded.
-EJES: Drawing axis and ticks.
+ACOL: 确定与变量dn相对应的颜色k.
+CMAP: 显示平面数据分布 x,y,g 的彩色丢.
+CONT: 显示多边形线的底图.
+PERTOP: 确定穿过三维模型的垂直剖面的地形线
+AM: 三维网格的插值与平滑.
+SST: 不同质量点网络的平均灵敏度
+STRA: 确定水平层.
+COV2 and BUSCA: 给定相关步长的二维数据的自相关.
+TITULO: 写标题.
+DIM: 超出输出尺寸限制.
+EJES: 作图显示坐标轴和标注.
 DIAL1, DIAL2, DIAL3, DIAL4, FIN: Dialog interfaces.
 
-function IRVA : combining basic colours (red, green, blue)
+function IRVA : 组合三原色 (红, 绿, 蓝)
  
 
 
-3.6. COMPILING SPECIFICATIONS. 
+3.6. 编译规范. 
 
-Compiled with Intel Visual Fortran, by using a Quickwin Application Project. The complete compilation requires reveral additional files (that are available in the zip file of codes and):
+通过使用Quickwin程序完成Inter Visual Fortran程序的编译. 完整的编译需要额外的文件 (可以在压缩文件中的代码文件中找到):
     
-   Resource files:  View.rc    (resource script)
-                    View.ico   (icono)
+   源文件:  View.rc    (源脚本)
+                    View.ico   (图标)
    
-   Fortran source files:  View.fd
+   Fortran 源文件:  View.fd
                           View.for 
 
-   C/C++Header:  View.h   (dialog window)    
+   C/C++Header:  View.h   (对话框窗口)    
 
 
 
 
-REFERENCES: 
+参考文献: 
 
 [1] Camacho, A.G., Montesinos, F.G. and Vieira, R. (2001). A 3-D gravity inversion tool based on exploration of model possibilities. 
 Computer & Geosciences 28, 191–204
